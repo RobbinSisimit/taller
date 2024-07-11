@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import = "java.util.List" %>
+<%@page import = "org.robbinsisimit.webapp.model.Producto"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,9 +49,23 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">nombre producto</th>
+                <th scope="col">marcaProducto</th>
+                <th scope="col">descripcion</th>
                 <th scope="col">valor</th>
               </tr>
             </thead>
+            <tbody>
+                <% List<Producto> productos = (List)request.getAttribute("productos");%>
+                <% for(Producto producto:productos){%>
+                <tr>
+                    <th scope="row"><%=producto.getProductoId()%></th>
+                    <th scope="row"><%=producto.getNombreProducto()%></th>
+                    <th scope="row"><%=producto.getMarcaProducto()%></th>
+                    <th scope="row"><%=producto.getDescripcionProduto()%></th>
+                    <th scope="row"><%=producto.getPrecio()%></th>
+                </tr>
+                <%} %>
+            </tbody>
             <tbody>
               <tr>
                 <th scope="row">1</th>
